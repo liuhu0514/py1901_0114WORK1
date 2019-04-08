@@ -1,0 +1,86 @@
+1.飞机大战，开发思路
+    面向过程、面向对象的开发方式
+
+2. 项目分析：
+    2.1. 明确项目中核心的功能、以及扩展功能
+        核心功能：英雄飞机，消灭敌人飞机
+        扩展功能：积分、升级、关卡、补给等等
+        开发时注意：先开发核心功能、功能完善后再开发扩展功能。
+    2.2. 分析项目出现的对象、类型
+        静态：
+            背景、飞机、子弹-> 创建对应的类型
+        动态：
+            流程
+
+        定义类型：GameSprite|BackgroundSprite|HeroSprite
+            |EnemySprite[image_path, speed, x, y][update()/move()/event()]
+
+            以前：控制流程：通过while True循环，面向过程的方式控制流程运行。
+            现在：把流程能控制，封装到类型中：class Engine():
+                该类型的对象，就是用来实现流程控制的。
+
+    2.3. 结合上周五的项目【飞机大战简易版】
+        大量的全局数据：定义全局变量，如screen_rect
+        流程控制，通过过程代码直接实现，pygame.init()....
+        其他：抽象成类型，封装对象实现。
+
+    2.4. 项目升级：完全面向对象的方式
+        将全局变量，包装到类型中。
+            类： 类属性，可以被类型名称直接访问。
+        将流程处理，包装到类型中。
+            类型中不同函数之间的调用，完成流程操作
+3. 简单项目结构：
+    ----------静态项目资源：背景、飞机、子弹
+    class GameSprite(pygame.sprite.Sprite):
+        pass
+
+    class BackgroundSprite(GameSprite):
+        pass
+
+    class HeroSprite(GameSprite):
+        pass
+
+    class EnemySprite(GameSprite):
+        pass
+
+    class BulletSprite(GameSprite):
+        pass
+    --------------项目中的公共数据：场景大小、飞机图片名称、背景图片名称
+    class Resource:
+        pass
+
+    --------------项目流程：游戏开始、运行，结束，是否重新开始
+    class Engine:
+
+        def __init__(self):
+            # 初始化游戏开始时要准备的数据
+
+        def run(self):
+            # 游戏开始
+            # 加载当前关卡游戏资源
+            # 场景循环
+            while True:
+                self.__update()
+                self.__event()
+
+        def __update(self):
+            # 更新展示数据
+            # 更新所有的精灵族
+            pygame.display.update()
+
+        def __event(self):
+            # 公共事件处理
+
+
+
+    -------------项目的启动
+    Engine().run()
+
+
+
+
+
+
+
+
+

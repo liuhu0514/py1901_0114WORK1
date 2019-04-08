@@ -1,0 +1,16 @@
+import re
+result = re.findall("hi*", "hi china hello china")
+print(result)
+result = re.findall('hi+', 'hi china hello chiina')
+print(result)
+result = re.findall('hi?', 'hi china hello chiina')
+print(result)
+result = re.findall("hi?", "hi china hello chiina")
+print(result)
+result = re.findall('hi{2}', 'hi china hello chiina')
+print(result)
+result = re.findall('hi{2,}', 'hiiii china hello chiina')
+print(result)
+result = re.findall('hi{1,2}', 'hiiii china hello chiina')
+print(result)
+
